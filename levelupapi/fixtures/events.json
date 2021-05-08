@@ -1,0 +1,13 @@
+[
+    {
+        "model": "levelupapi.event",
+        "pk": 1,
+        "fields": {
+            "organizer": 1,
+            "game": 1,
+            "description": "Let's settle this",
+            "start_date": "2021-05-05 18:00:00",
+            "attendees": []
+        }
+    }
+]
