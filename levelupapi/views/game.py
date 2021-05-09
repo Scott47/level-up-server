@@ -28,13 +28,13 @@ class GameView(ViewSet):
         game.maker = request.data["maker"]
         game.number_of_players = request.data["numberOfPlayers"]
         game.skill_level = request.data["skillLevel"]
-        game.gamer = request.data["gamer"]
+        game.gamer = gamer
 
         # Use the Django ORM to get the record from the database
         # whose `id` is what the client passed as the
         # `gameTypeId` in the body of the request.
-        gametype = GameType.objects.get(pk=request.data["gameTypeId"])
-        game.gametype = gametype
+        game_type = GameType.objects.get(pk=request.data["gameTypeId"])
+        game.game_type = game_type
 
         # Try to save the new game to the database, then
         # serialize the game instance as JSON, and send the
@@ -86,8 +86,8 @@ class GameView(ViewSet):
         game.skill_level = request.data["skillLevel"]
         game.gamer = gamer
 
-        gametype = GameType.objects.get(pk=request.data["gameTypeId"])
-        game.gametype = gametype
+        game_type = GameType.objects.get(pk=request.data["gameTypeId"])
+        game.game_type = game_type
         game.save()
 
         # 204 status code means everything worked but the
