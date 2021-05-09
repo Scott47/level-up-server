@@ -15,8 +15,8 @@ class GameTypeView(ViewSet):
             Response -- JSON serialized game type
         """
         try:
-            game_type = GameType.objects.get(pk=pk)
-            serializer = GameTypeSerializer(game_type, context={'request': request})
+            game_type   = GameType.objects.get(pk=pk)
+            serializer  = GameTypeSerializer(game_type, context={'request': request})
             return Response(serializer.data)
         except Exception as ex:
             return HttpResponseServerError(ex)
@@ -27,13 +27,13 @@ class GameTypeView(ViewSet):
         Returns:
             Response -- JSON serialized list of game types
         """
-        gametypes = GameType.objects.all()
+        game_types = GameType.objects.all()
 
         # Note the addtional `many=True` argument to the
         # serializer. It's needed when you are serializing
         # a list of objects instead of a single object.
         serializer = GameTypeSerializer(
-            gametypes, many=True, context={'request': request})
+            game_types, many=True, context={'request': request})
         return Response(serializer.data)
 
 class GameTypeSerializer(serializers.ModelSerializer):
@@ -43,5 +43,5 @@ class GameTypeSerializer(serializers.ModelSerializer):
         serializers
     """
     class Meta:
-        model = GameType
-        fields = ('id', 'label')
+        model   = GameType
+        fields  = ('id', 'label')
