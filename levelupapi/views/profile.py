@@ -67,5 +67,6 @@ class EventSerializer(serializers.ModelSerializer):
         fields = ('id',
                   'description',
                   'date',
-                  'time')
+                  'time',
+                  'game')
 
